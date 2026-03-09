@@ -35,7 +35,9 @@ class FireRedVadConfig:
 
 class FireRedVad:
     @classmethod
-    def from_pretrained(cls, model_dir, config=FireRedVadConfig()):
+    def from_pretrained(cls, model_dir, config=None):
+        if config is None:
+            config = FireRedVadConfig()
         # Build Feat Extractor
         cmvn_path = os.path.join(model_dir, "cmvn.ark")
         audio_feat = AudioFeat(cmvn_path)
